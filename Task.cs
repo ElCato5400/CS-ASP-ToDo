@@ -94,7 +94,7 @@ public class Task
 
     public override string ToString()
     {
-        return $"|{id,-5}|{name,-20}|{description,-50}|{(isDone ? "Completed" : "Not Completed" ),-15}|{createdDate,-20}";
+        return $"|{id,-5}|{name,-20}|{description,-50}|{(isDone ? "Completed" : "Not Completed"),-15}|{createdDate,-20}";
     }
     #endregion
 
@@ -108,6 +108,7 @@ public class Task
     public static void LoadAll()
     {
         String json;
+        Tasks = new List<Task>();
         try
         {
             json = File.ReadAllText(FILE_NAME);
