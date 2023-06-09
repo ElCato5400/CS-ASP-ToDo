@@ -3,8 +3,11 @@ var app = builder.Build();
 
 app.MapGet("/", () =>
 {
+    String tasks;
     Task.LoadAll();
-    return Task.Tasks.Select(task => task.ToString()).Aggregate((a, b) => $"{a}\n{b}") +
+    if (Task.Tasks == null || Task.Tasks.Count == 0) tasks = "No tasks";
+    else tasks = Task.Tasks.Select(task => task.ToString()).Aggregate((a, b) => $"{a}\n{b}");
+    return tasks +
             @"
             
             Add a new task by going to /add?name=NAME&description=DESCRIPTION
